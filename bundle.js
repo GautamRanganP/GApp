@@ -82657,16 +82657,16 @@ function App() {
     path: "GApp/",
     element: /*#__PURE__*/react.createElement(HomePage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin/create",
+    path: "GApp/admin/create/",
     element: /*#__PURE__*/react.createElement(admin_AdminCreate, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin/home",
+    path: "GApp/admin/home/",
     element: /*#__PURE__*/react.createElement(AdminPage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin/edit/:id",
+    path: "GApp/admin/edit/:id/",
     element: /*#__PURE__*/react.createElement(admin_AdminForm, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin",
+    path: "GApp/admin/",
     element: /*#__PURE__*/react.createElement(LoginAdmin, null)
   }), /*#__PURE__*/react.createElement(Route, {
     path: "*",
