@@ -21,10 +21,10 @@ function App () {
         <div className='main-content'>
         <Routes>
           <Route path='GApp/' element={<HomePage></HomePage>} />
-          <Route path='GApp/admin/create' element={<AdminCreate></AdminCreate>}></Route>
-          <Route path='GApp/admin/home' element={<AdminPage></AdminPage>}></Route>
-          <Route path='GApp/admin/edit/:id' element={<AdminForm></AdminForm>}></Route>
-          <Route path='GApp/admin' element={<LoginAdmin></LoginAdmin>}></Route>
+          <Route path='GApp/admin/create/' element={<AdminCreate></AdminCreate>}></Route>
+          <Route path='GApp/admin/home/' element={<AdminPage></AdminPage>}></Route>
+          <Route path='GApp/admin/edit/:id/' element={<AdminForm></AdminForm>}></Route>
+          <Route path='GApp/admin/' element={<LoginAdmin></LoginAdmin>}></Route>
           {/* <Route path='/admin' element={<LoginAdmin></LoginAdmin>}></Route>
           <Route path='/admin/home' element={<AdminPage></AdminPage>}></Route>
           <Route path='/admin/edit/:id' element={<AdminForm></AdminForm>}></Route>
