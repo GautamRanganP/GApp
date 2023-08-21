@@ -82651,22 +82651,24 @@ const Link_Link = /*#__PURE__*/react.forwardRef(function Link(inProps, ref) {
 
 
 function App() {
-  return /*#__PURE__*/react.createElement(BrowserRouter, null, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
+  return /*#__PURE__*/react.createElement(BrowserRouter, {
+    basename: "/GApp"
+  }, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
     className: "main-content"
   }, /*#__PURE__*/react.createElement(Routes, null, /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/",
+    path: "/",
     element: /*#__PURE__*/react.createElement(HomePage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin/create",
+    path: "/admin/create",
     element: /*#__PURE__*/react.createElement(admin_AdminCreate, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin/home",
+    path: "/admin/home",
     element: /*#__PURE__*/react.createElement(AdminPage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin/edit/:id",
+    path: "/admin/edit/:id",
     element: /*#__PURE__*/react.createElement(admin_AdminForm, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "GApp/admin",
+    path: "/admin",
     element: /*#__PURE__*/react.createElement(LoginAdmin, null)
   }), /*#__PURE__*/react.createElement(Route, {
     path: "*",
