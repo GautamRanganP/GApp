@@ -79959,7 +79959,7 @@ var AdminCreate = function AdminCreate() {
     setEndDateForm = _useState12[1];
   var navigate = dist_useNavigate();
   var handleCancel = function handleCancel() {
-    navigate('/admin/home');
+    navigate('/GApp/admin/home');
   };
   (0,react.useEffect)(function () {
     var tomorrow = moment_default()().add(1, 'days');
@@ -79995,6 +79995,7 @@ var AdminCreate = function AdminCreate() {
     };
     // const token = Cookies.get('token')
     addObjectToDatabase(data);
+    navigate();
   }
   var settingStartDate = (0,react.useCallback)(function (date) {
     setStartDateForm(date);
@@ -92687,7 +92688,7 @@ function LoginAdmin() {
               expires: expireTime
             });
             setError('success');
-            navigate('GApp/admin/home');
+            navigate('/GApp/admin/home');
             _context.next = 24;
             break;
           case 20:
@@ -92709,7 +92710,7 @@ function LoginAdmin() {
     api.get('token');
     var token = api.get('token');
     if (token) {
-      navigate('GApp/admin/home');
+      navigate('/GApp/admin/home');
     }
   }, []);
   return /*#__PURE__*/react.createElement(styles_ThemeProvider_ThemeProvider, {
@@ -93108,11 +93109,11 @@ var BorderLinearProgress = (0,styled/* default */.ZP)(LinearProgress_LinearProgr
   var theme = _ref.theme;
   return _ref2 = {
     height: 25,
-    borderRadius: 5
+    borderRadius: 0
   }, _defineProperty(_ref2, "&.".concat(LinearProgress_linearProgressClasses.colorPrimary), {
     backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
   }), _defineProperty(_ref2, "& .".concat(LinearProgress_linearProgressClasses.bar), {
-    borderRadius: 5,
+    borderRadius: 0,
     backgroundColor: theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8'
   }), _ref2;
 });
@@ -93313,7 +93314,7 @@ var PollCard = function PollCard(props) {
     setVoteId(_id, optiontwo);
   };
   return /*#__PURE__*/react.createElement("div", {
-    className: "card"
+    className: "card poll-card"
   }, /*#__PURE__*/react.createElement("div", {
     className: "card-body"
   }, /*#__PURE__*/react.createElement("h5", {
@@ -93971,7 +93972,7 @@ var PollAdmin = function PollAdmin(props) {
     optiontwo = _props$data.optiontwo;
   var navigate = dist_useNavigate();
   var handlerNavigation = function handlerNavigation() {
-    navigate("/admin/edit/".concat(_id));
+    navigate("/GApp/admin/edit/".concat(_id));
   };
   var handleDeleteOption = function handleDeleteOption() {
     setOpen(true);
@@ -94080,7 +94081,7 @@ function AdminPage_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-// import Cookies from 'js-cookie'
+
 
 function AdminPage() {
   var _useState = (0,react.useState)([]),
@@ -94093,7 +94094,7 @@ function AdminPage() {
     setLoading = _useState4[1];
   var navigate = dist_useNavigate();
   var handleRoute = function handleRoute() {
-    navigate('/admin/create');
+    navigate('/GApp/admin/create');
   };
   (0,react.useEffect)(function () {
     var fetchDataFromFirebase = function fetchDataFromFirebase() {
@@ -94113,8 +94114,12 @@ function AdminPage() {
         setLoading(false);
       });
     };
-    fetchDataFromFirebase();
-
+    var token = api.get('token');
+    if (!token) {
+      navigate('/GApp/admin');
+    } else {
+      fetchDataFromFirebase();
+    }
     // Clean up the event listener when the component unmounts
     return function () {
       db.ref('yourPath').off();
