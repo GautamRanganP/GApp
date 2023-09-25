@@ -82306,10 +82306,14 @@ var Navbar = function Navbar() {
     className: "container-fluid"
   }, /*#__PURE__*/react.createElement(NavLink, {
     className: "navbar-brand",
-    to: "/"
+    to: "/GApp"
   }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, {
     className: "brand-logo"
-  }), "Poll App"), /*#__PURE__*/react.createElement("div", {
+  }), "Poll App"), !user && /*#__PURE__*/react.createElement("div", {
+    className: "login-button-wrap"
+  }, /*#__PURE__*/react.createElement(NavLink, {
+    to: "/GApp/admin"
+  }, "Login")), /*#__PURE__*/react.createElement("div", {
     className: "admin-avatar"
   }, user && /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Button_Button, {
     id: "basic-button",
