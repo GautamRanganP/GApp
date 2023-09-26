@@ -79995,7 +79995,7 @@ var AdminCreate = function AdminCreate() {
     };
     // const token = Cookies.get('token')
     addObjectToDatabase(data);
-    navigate();
+    navigate('/GApp/admin/home');
   }
   var settingStartDate = (0,react.useCallback)(function (date) {
     setStartDateForm(date);
@@ -80175,7 +80175,7 @@ var AdminForm = function AdminForm() {
     });
   }, []);
   var handleCancel = function handleCancel() {
-    navigate('/admin/home');
+    navigate('/GApp/admin/home');
   };
   var handleUpdate = function handleUpdate(e) {
     e.preventDefault();
@@ -80215,6 +80215,7 @@ var AdminForm = function AdminForm() {
     };
     objRef.update(updatedData).then(function () {
       console.log('object data updated successfully');
+      navigate('/GApp/admin/home');
     })["catch"](function () {
       console.error('error updating');
     });
@@ -94463,7 +94464,7 @@ var Navbar = function Navbar() {
     to: "/GApp"
   }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, {
     className: "brand-logo"
-  }), "Poll App"), !user && /*#__PURE__*/react.createElement("div", {
+  }), "GApp"), !user && /*#__PURE__*/react.createElement("div", {
     className: "login-button-wrap"
   }, /*#__PURE__*/react.createElement(NavLink, {
     to: "/GApp/admin"
@@ -94485,21 +94486,21 @@ var Navbar = function Navbar() {
     }
   }, /*#__PURE__*/react.createElement(MenuItem_MenuItem, {
     onClick: handleHomeRoute,
-    selected: location.pathname === 'GApp/admin/home'
+    selected: location.pathname === '/GApp/admin/home'
   }, /*#__PURE__*/react.createElement(AdminPanelSettings/* default */.Z, {
     sx: {
       marginRight: '5px'
     }
   }), " Admin Home"), /*#__PURE__*/react.createElement(MenuItem_MenuItem, {
     onClick: handlePollHome,
-    selected: location.pathname === 'GApp/'
+    selected: location.pathname === '/GApp'
   }, /*#__PURE__*/react.createElement(Group/* default */.Z, {
     sx: {
       marginRight: '5px'
     }
   }), " Participant Home"), /*#__PURE__*/react.createElement(MenuItem_MenuItem, {
     onClick: handleProfileRoute,
-    selected: location.pathname === 'GApp/admin/profile'
+    selected: location.pathname === '/GApp/admin/profile'
   }, /*#__PURE__*/react.createElement(AccountCircle/* default */.Z, {
     sx: {
       marginRight: '5px'
@@ -94890,7 +94891,7 @@ function App() {
   }, 'Copyright © ', /*#__PURE__*/react.createElement(material_Link_Link, {
     color: "inherit",
     href: "https://mui.com/"
-  }, "Company"), ' ', new Date().getFullYear(), '.'))));
+  }, "GApp"), ' ', new Date().getFullYear(), '.'))));
 }
 /* harmony default export */ const src_App = (App);
 ;// CONCATENATED MODULE: ./src/app/store.js
