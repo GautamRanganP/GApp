@@ -13,6 +13,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
 import Cookies from 'js-cookie'
 import { removeUser } from '../feature/UserSlice'
 import './Navbar.scss'
+import { auth } from '../../firebase/firebase'
 
 const Navbar = () => {
   const user = useSelector((state) => { if (state.user && state.user.user) return state.user.user })
@@ -27,38 +28,44 @@ const Navbar = () => {
   const handleClose = useCallback(() => {
     setAnchorEl(null)
   }, [])
-  const handleLogoutClick = useCallback(() => {
+  const handleLogoutClick = useCallback(async () => {
     handleClose()
+    await auth.signOut()
     localStorage.removeItem('token')
     Cookies.remove('token')
     Cookies.remove('user_id')
     dispatch(removeUser())
     const token = Cookies.get('token')
     if (!token) {
-      navigate('/admin')
+      navigate('GApp/admin')
     }
   }, [])
 
   const handleProfileRoute = useCallback(() => {
     handleClose()
-    navigate('/admin/profile')
+    navigate('GApp/admin/profile')
   }, [])
   const handleHomeRoute = useCallback(() => {
     handleClose()
-    navigate('/admin/home')
+    navigate('GApp/admin/home')
   }, [])
   const handlePollHome = useCallback(() => {
     handleClose()
-    navigate('/')
+    navigate('/GApp')
   }, [])
 
   return (
         <nav className="navbar">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">
+                <NavLink className="navbar-brand" to="/GApp">
                     <GitHubIcon className="brand-logo"/>
-                    Poll App
+                    GApp
                 </NavLink>
+                { !user && <div className="login-button-wrap">
+                <NavLink to="/GApp/admin">
+                    Login
+                </NavLink>
+                    </div> }
                 <div className="admin-avatar">
                     { user &&
                         <div>
@@ -69,7 +76,7 @@ const Navbar = () => {
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
                             >
-                              <Avatar>{user.email.slice(0, 1)}</Avatar>
+                              <Avatar>{user.user.slice(0, 1)}</Avatar>
                             </Button>
                             <Menu
                                 id="basic-menu"
@@ -80,9 +87,9 @@ const Navbar = () => {
                                   'aria-labelledby': 'basic-button'
                                 }}
                             >
-                                <MenuItem onClick={handleHomeRoute} selected={location.pathname === '/admin/home' }><AdminPanelSettingsIcon sx={{ marginRight: '5px' }}/> Admin Home</MenuItem>
-                                <MenuItem onClick={handlePollHome} selected={location.pathname === '/' }><GroupIcon sx={{ marginRight: '5px' }}/> Participant Home</MenuItem>
-                                <MenuItem onClick={handleProfileRoute} selected={location.pathname === '/admin/profile' }><AccountCircleIcon sx={{ marginRight: '5px' }}/> Profile</MenuItem>
+                                <MenuItem onClick={handleHomeRoute} selected={location.pathname === '/GApp/admin/home' }><AdminPanelSettingsIcon sx={{ marginRight: '5px' }}/> Admin Home</MenuItem>
+                                <MenuItem onClick={handlePollHome} selected={location.pathname === '/GApp' }><GroupIcon sx={{ marginRight: '5px' }}/> Participant Home</MenuItem>
+                                <MenuItem onClick={handleProfileRoute} selected={location.pathname === '/GApp/admin/profile' }><AccountCircleIcon sx={{ marginRight: '5px' }}/> Profile</MenuItem>
                                 <MenuItem onClick={handleLogoutClick}><LogoutIcon sx={{ marginRight: '5px' }}/> Logout</MenuItem>
                             </Menu>
                         </div>}

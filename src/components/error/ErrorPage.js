@@ -9,7 +9,7 @@ export default function ErrorPage () {
     <Alert severity="error">
       <AlertTitle>Error 404 Page not found</AlertTitle>
     </Alert>
-    <Button sx={{ margin: '10px 0px' }} onClick={ React.useCallback(() => navigate('/'), [])} variant='contained'>Go To Home</Button>
+    <Button sx={{ margin: '10px 0px' }} onClick={ React.useCallback(() => navigate('/GApp'), [])} variant='contained'>Go To Home</Button>
     </Box>
   )
 }

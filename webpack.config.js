@@ -8,13 +8,11 @@ module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-    // path: `${__dirname}/dist`
+    filename: 'index.bundle.js',
+    publicPath: 'auto'
   },
   devServer: {
-    static: path.join(__dirname, 'public'),
     port: 3000,
     hot: true,
     historyApiFallback: true

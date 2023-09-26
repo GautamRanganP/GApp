@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
 // import Cookies from 'js-cookie'
-import db from './firebase'
+import { db } from '../../firebase/firebase'
 // import { TextareaAutosize, TextField } from '@mui/material'
 
 const AdminCreate = () => {
@@ -17,7 +17,7 @@ const AdminCreate = () => {
   const navigate = useNavigate()
 
   const handleCancel = () => {
-    navigate('/admin/home')
+    navigate('/GApp/admin/home')
   }
 
   useEffect(() => {
@@ -46,6 +46,7 @@ const AdminCreate = () => {
     const data = { title, description, startdate, enddate, votes, optionone, optiontwo, optiononevote, optiontwovote }
     // const token = Cookies.get('token')
     addObjectToDatabase(data)
+    navigate('/GApp/admin/home')
   }
 
   const settingStartDate = useCallback((date) => {

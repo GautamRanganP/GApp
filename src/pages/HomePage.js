@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import PollCard from '../components/card/PollCard'
-import db from '../components/admin/firebase'
+import { db } from '../firebase/firebase'
 import { ref, onValue } from 'firebase/database'
 
 export function HomePage () {

@@ -1,7 +1,8 @@
-import firebase from 'firebase/app'
-import 'firebase/database'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/database'
+import 'firebase/compat/auth'
 
-firebase.initializeApp({
+const app = firebase.initializeApp({
   apiKey: 'AIzaSyCfPeyWMPyIK9m0ySh0hiVdGJG82k3iE3s',
   authDomain: 'poll-app-4aa05.firebaseapp.com',
   databaseURL: 'https://poll-app-4aa05-default-rtdb.firebaseio.com',
@@ -12,6 +13,7 @@ firebase.initializeApp({
   measurementId: 'G-7Q9NCZNK6C'
 })
 
-const db = firebase.firestore()
+export const db = app.database()
+export const auth = app.auth()
 
-export default db
+export default app

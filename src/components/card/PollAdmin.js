@@ -8,7 +8,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogTitle from '@mui/material/DialogTitle'
 import './card.scss'
-import db from '../admin/firebase'
+import { db } from '../../firebase/firebase'
 
 const PollAdmin = (props) => {
   const [open, setOpen] = React.useState(false)
@@ -16,7 +16,7 @@ const PollAdmin = (props) => {
   const { title, description, _id, votes, optiononevote, optiontwovote, startdate, enddate, optionone, optiontwo } = props.data
   const navigate = useNavigate()
   const handlerNavigation = () => {
-    navigate(`/admin/edit/${_id}`)
+    navigate(`/GApp/admin/edit/${_id}`)
   }
   const handleDeleteOption = () => {
     setOpen(true)

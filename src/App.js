@@ -10,26 +10,27 @@ import LoginAdmin from './components/admin/LoginAdmin'
 import { HomePage } from './pages/HomePage'
 import { AdminPage } from './pages/AdminPage'
 import Navbar from './components/navbar/Navbar'
-// import AdminProfile from './components/admin/AdminProfile'
+import AdminProfile from './components/admin/AdminProfile'
 import ErrorPage from './components/error/ErrorPage'
 import { Link, Typography } from '@mui/material'
 
 function App () {
   return (
-      <BrowserRouter basename='/GApp'>
+      <BrowserRouter>
         <Navbar></Navbar>
         <div className='main-content'>
         <Routes>
-          <Route path='/' element={<HomePage></HomePage>} />
-          <Route path='/admin/create' element={<AdminCreate></AdminCreate>}></Route>
-          <Route path='/admin/home' element={<AdminPage></AdminPage>}></Route>
-          <Route path='/admin/edit/:id' element={<AdminForm></AdminForm>}></Route>
-          <Route path='/admin' element={<LoginAdmin></LoginAdmin>}></Route>
+          <Route path='/GApp/' element={<HomePage></HomePage>} />
+          <Route path='/GApp/admin/create' element={<AdminCreate></AdminCreate>}></Route>
+          <Route path='/GApp/admin/home' element={<AdminPage></AdminPage>}></Route>
+          <Route path='/GApp/admin/edit/:id' element={<AdminForm></AdminForm>}></Route>
+          <Route path='/GApp/admin' element={<LoginAdmin></LoginAdmin>}></Route>
+          <Route path='/GApp/admin/profile' element={<AdminProfile></AdminProfile>}></Route>
           {/* <Route path='/admin' element={<LoginAdmin></LoginAdmin>}></Route>
           <Route path='/admin/home' element={<AdminPage></AdminPage>}></Route>
           <Route path='/admin/edit/:id' element={<AdminForm></AdminForm>}></Route>
           <Route path='/admin/create' element={<AdminCreate></AdminCreate>}></Route>
-          <Route path='/admin/profile' element={<AdminProfile></AdminProfile>}></Route> */}
+      */}
           <Route path='*' exact={true} element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
         </div>
@@ -38,7 +39,7 @@ function App () {
             <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 8, mb: 4 }}>
               {'Copyright © '}
               <Link color="inherit" href="https://mui.com/">
-                Company
+                GApp
               </Link>{' '}
               {new Date().getFullYear()}
               {'.'}

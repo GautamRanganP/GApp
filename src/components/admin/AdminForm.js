@@ -4,7 +4,7 @@ import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 // import Cookies from 'js-cookie'
-import db from '../admin/firebase'
+import { db } from '../../firebase/firebase'
 
 const AdminForm = () => {
   const { id } = useParams()
@@ -40,7 +40,7 @@ const AdminForm = () => {
   }, [])
 
   const handleCancel = () => {
-    navigate('/admin/home')
+    navigate('/GApp/admin/home')
   }
 
   const handleUpdate = (e) => {
@@ -81,6 +81,7 @@ const AdminForm = () => {
     }
     objRef.update(updatedData).then(() => {
       console.log('object data updated successfully')
+      navigate('/GApp/admin/home')
     }).catch(() => {
       console.error('error updating')
     })

@@ -6,7 +6,11 @@
         margin: 0px 10px;
     }
 }
-
+.poll-card{
+    .card-body{
+        padding: 20px 24px !important;
+    }
+}
 .card{
     border: 5px solid rgb(227, 242, 253);
     .card-body{

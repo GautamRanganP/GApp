@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import PollAdmin from '../components/card/PollAdmin'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ref, onValue } from 'firebase/database'
-import db from '../components/admin/firebase'
-// import Cookies from 'js-cookie'
+import { db } from '../firebase/firebase'
+import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 
 export function AdminPage () {
@@ -12,7 +12,7 @@ export function AdminPage () {
   const navigate = useNavigate()
 
   const handleRoute = () => {
-    navigate('/admin/create')
+    navigate('/GApp/admin/create')
   }
 
   useEffect(() => {
@@ -30,8 +30,12 @@ export function AdminPage () {
         setLoading(false)
       })
     }
-    fetchDataFromFirebase()
-
+    const token = Cookies.get('token')
+    if (!token) {
+      navigate('/GApp/admin')
+    } else {
+      fetchDataFromFirebase()
+    }
     // Clean up the event listener when the component unmounts
     return () => {
       db.ref('yourPath').off()

@@ -3,7 +3,7 @@
     flex-grow: 1;
     margin: 10px 0px;
     &.active-vote{
-        border-radius: 10px;
+        border-radius: 0px;
         border: 5px solid lightgray;
     }
     .vote-percent-text{
@@ -17,8 +17,8 @@
     .progress-done-icon{
         position: absolute;
         top: 6.5px; 
-        left: -21px;
+        left: -24.5px;
         color: green; 
-        font-size:16px;
+        font-size:18px;
     }
 }

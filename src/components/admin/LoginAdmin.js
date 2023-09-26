@@ -11,10 +11,12 @@ import Container from '@mui/material/Container'
 import Alert from '@mui/material/Alert'
 import CircularProgess from '@mui/material/CircularProgress'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { redirect, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../feature/UserSlice'
+import { auth } from '../../firebase/firebase'
+// import { useAuth } from '../../contexts/AuthContext'
 
 const theme = createTheme()
 
@@ -22,8 +24,10 @@ export default function LoginAdmin () {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  // const login = useAuth()
+  // const signup = useAuth()
 
-  const handleSubmit = React.useCallback((event) => {
+  const handleSubmit = React.useCallback(async (event) => {
     event.preventDefault()
     setError('loading')
     const data = new FormData(event.currentTarget)
@@ -33,38 +37,54 @@ export default function LoginAdmin () {
     })
     const email = data.get('email')
     const password = data.get('password')
-    const payload = { email, password }
-    fetch('http://localhost:8082/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    }).then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
-      return response.json()
-    }).then((data) => {
-      console.log('login sucess', data)
+    try {
+      // create user
+      // const data = await auth.createUserWithEmailAndPassword(email, password)
+      const response = await auth.signInWithEmailAndPassword(email, password)
+      console.log('sucess', response.user.email)
+      const data = { user: response.user.email }
       dispatch(setUser(data))
       const expireTime = new Date(new Date().getTime() + 60 * 60 * 1000)
-      Cookies.set('user_id', data._id, { expires: expireTime })
-      Cookies.set('token', data.token, { expires: expireTime })
+      Cookies.set('user_id', response.user.uid, { expires: expireTime })
+      Cookies.set('token', response.user._delegate.accessToken, { expires: expireTime })
       setError('success')
-      redirect('/admin/home')
-    }).catch(() => {
+      navigate('/GApp/admin/home')
+    } catch (error) {
+      console.log('failed', error)
       setError('failed')
-    })
+    }
+    // const payload = { email, password }
+    // fetch('http://localhost:8082/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(payload)
+    // }).then((response) => {
+    //   if (!response.ok) {
+    //     throw new Error('Network response was not ok')
+    //   }
+    //   return response.json()
+    // }).then((data) => {
+    //   console.log('login sucess', data)
+    //   dispatch(setUser(data))
+    //   const expireTime = new Date(new Date().getTime() + 60 * 60 * 1000)
+    //   Cookies.set('user_id', data._id, { expires: expireTime })
+    //   Cookies.set('token', data.token, { expires: expireTime })
+    //   setError('success')
+    //   redirect('/admin/home')
+    // }).catch(() => {
+    //   setError('failed')
+    // })
   }, [])
 
   React.useEffect(() => {
     Cookies.get('token')
     const token = Cookies.get('token')
     if (token) {
-      navigate('/admin/home')
+      navigate('/GApp/admin/home')
     }
-  })
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
