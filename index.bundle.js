@@ -94855,7 +94855,7 @@ const Link_Link = /*#__PURE__*/react.forwardRef(function Link(inProps, ref) {
 
 function App() {
   return /*#__PURE__*/react.createElement(HashRouter, {
-    basename: "/GApp"
+    basename: "/"
   }, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
     className: "main-content"
   }, /*#__PURE__*/react.createElement(Routes, null, /*#__PURE__*/react.createElement(Route, {
