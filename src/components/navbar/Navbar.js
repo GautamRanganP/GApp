@@ -37,7 +37,7 @@ const Navbar = () => {
     dispatch(removeUser())
     const token = Cookies.get('token')
     if (!token) {
-      navigate('GApp/admin')
+      navigate('/admin')
     }
   }, [])
 
@@ -61,11 +61,11 @@ const Navbar = () => {
                     <GitHubIcon className="brand-logo"/>
                     GApp
                 </NavLink>
-                { !user && <div className="login-button-wrap">
+                {/* { !user && <div className="login-button-wrap">
                 <NavLink to="/admin">
                     Login
                 </NavLink>
-                    </div> }
+                    </div> } */}
                 <div className="admin-avatar">
                     { user &&
                         <div>

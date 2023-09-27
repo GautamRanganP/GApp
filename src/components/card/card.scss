@@ -74,7 +74,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
     .card{
         .card-body{
             .votes-wrap-admin{ 
@@ -85,5 +85,14 @@
                 gap: 10px;
             }      
         }   
+    }
+}
+@media (min-width:992px) and (max-width: 1199.98px) {
+    .card{
+        .card-body{
+            .votes-wrap-admin{ 
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     }
 }

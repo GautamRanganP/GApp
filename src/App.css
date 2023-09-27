@@ -126,3 +126,9 @@ body{
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 1023px) {
+  .row.poll-card-margin{
+    margin: 4px
+  }
+}
