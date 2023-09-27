@@ -94435,7 +94435,7 @@ var Navbar = function Navbar() {
           dispatch(removeUser());
           token = api.get('token');
           if (!token) {
-            navigate('GApp/admin');
+            navigate('/admin');
           }
         case 9:
         case "end":
@@ -94464,11 +94464,7 @@ var Navbar = function Navbar() {
     to: "/"
   }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, {
     className: "brand-logo"
-  }), "GApp"), !user && /*#__PURE__*/react.createElement("div", {
-    className: "login-button-wrap"
-  }, /*#__PURE__*/react.createElement(NavLink, {
-    to: "/admin"
-  }, "Login")), /*#__PURE__*/react.createElement("div", {
+  }), "GApp"), /*#__PURE__*/react.createElement("div", {
     className: "admin-avatar"
   }, user && /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Button_Button, {
     id: "basic-button",
