@@ -47755,26 +47755,26 @@ function BrowserRouter(_ref) {
     future,
     window
   } = _ref;
-  let historyRef = react.useRef();
+  let historyRef = React.useRef();
   if (historyRef.current == null) {
-    historyRef.current = router_createBrowserHistory({
+    historyRef.current = createBrowserHistory({
       window,
       v5Compat: true
     });
   }
   let history = historyRef.current;
-  let [state, setStateImpl] = react.useState({
+  let [state, setStateImpl] = React.useState({
     action: history.action,
     location: history.location
   });
   let {
     v7_startTransition
   } = future || {};
-  let setState = react.useCallback(newState => {
+  let setState = React.useCallback(newState => {
     v7_startTransition && dist_startTransitionImpl ? dist_startTransitionImpl(() => setStateImpl(newState)) : setStateImpl(newState);
   }, [setStateImpl, v7_startTransition]);
-  react.useLayoutEffect(() => history.listen(setState), [history, setState]);
-  return /*#__PURE__*/react.createElement(dist_Router, {
+  React.useLayoutEffect(() => history.listen(setState), [history, setState]);
+  return /*#__PURE__*/React.createElement(Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -47793,26 +47793,26 @@ function HashRouter(_ref2) {
     future,
     window
   } = _ref2;
-  let historyRef = React.useRef();
+  let historyRef = react.useRef();
   if (historyRef.current == null) {
-    historyRef.current = createHashHistory({
+    historyRef.current = router_createHashHistory({
       window,
       v5Compat: true
     });
   }
   let history = historyRef.current;
-  let [state, setStateImpl] = React.useState({
+  let [state, setStateImpl] = react.useState({
     action: history.action,
     location: history.location
   });
   let {
     v7_startTransition
   } = future || {};
-  let setState = React.useCallback(newState => {
+  let setState = react.useCallback(newState => {
     v7_startTransition && dist_startTransitionImpl ? dist_startTransitionImpl(() => setStateImpl(newState)) : setStateImpl(newState);
   }, [setStateImpl, v7_startTransition]);
-  React.useLayoutEffect(() => history.listen(setState), [history, setState]);
-  return /*#__PURE__*/React.createElement(Router, {
+  react.useLayoutEffect(() => history.listen(setState), [history, setState]);
+  return /*#__PURE__*/react.createElement(dist_Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -94854,25 +94854,27 @@ const Link_Link = /*#__PURE__*/react.forwardRef(function Link(inProps, ref) {
 
 
 function App() {
-  return /*#__PURE__*/react.createElement(BrowserRouter, null, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
+  return /*#__PURE__*/react.createElement(HashRouter, {
+    basename: "/GApp"
+  }, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
     className: "main-content"
   }, /*#__PURE__*/react.createElement(Routes, null, /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/",
+    path: "/",
     element: /*#__PURE__*/react.createElement(HomePage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/create",
+    path: "/admin/create",
     element: /*#__PURE__*/react.createElement(admin_AdminCreate, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/home",
+    path: "/admin/home",
     element: /*#__PURE__*/react.createElement(AdminPage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/edit/:id",
+    path: "/admin/edit/:id",
     element: /*#__PURE__*/react.createElement(admin_AdminForm, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin",
+    path: "/admin",
     element: /*#__PURE__*/react.createElement(LoginAdmin, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/profile",
+    path: "/admin/profile",
     element: /*#__PURE__*/react.createElement(admin_AdminProfile, null)
   }), /*#__PURE__*/react.createElement(Route, {
     path: "*",
