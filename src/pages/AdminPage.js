@@ -12,7 +12,7 @@ export function AdminPage () {
   const navigate = useNavigate()
 
   const handleRoute = () => {
-    navigate('/GApp/admin/create')
+    navigate('/admin/create')
   }
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export function AdminPage () {
     }
     const token = Cookies.get('token')
     if (!token) {
-      navigate('/GApp/admin')
+      navigate('/admin')
     } else {
       fetchDataFromFirebase()
     }

@@ -47755,26 +47755,26 @@ function BrowserRouter(_ref) {
     future,
     window
   } = _ref;
-  let historyRef = react.useRef();
+  let historyRef = React.useRef();
   if (historyRef.current == null) {
-    historyRef.current = router_createBrowserHistory({
+    historyRef.current = createBrowserHistory({
       window,
       v5Compat: true
     });
   }
   let history = historyRef.current;
-  let [state, setStateImpl] = react.useState({
+  let [state, setStateImpl] = React.useState({
     action: history.action,
     location: history.location
   });
   let {
     v7_startTransition
   } = future || {};
-  let setState = react.useCallback(newState => {
+  let setState = React.useCallback(newState => {
     v7_startTransition && dist_startTransitionImpl ? dist_startTransitionImpl(() => setStateImpl(newState)) : setStateImpl(newState);
   }, [setStateImpl, v7_startTransition]);
-  react.useLayoutEffect(() => history.listen(setState), [history, setState]);
-  return /*#__PURE__*/react.createElement(dist_Router, {
+  React.useLayoutEffect(() => history.listen(setState), [history, setState]);
+  return /*#__PURE__*/React.createElement(Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -47793,26 +47793,26 @@ function HashRouter(_ref2) {
     future,
     window
   } = _ref2;
-  let historyRef = React.useRef();
+  let historyRef = react.useRef();
   if (historyRef.current == null) {
-    historyRef.current = createHashHistory({
+    historyRef.current = router_createHashHistory({
       window,
       v5Compat: true
     });
   }
   let history = historyRef.current;
-  let [state, setStateImpl] = React.useState({
+  let [state, setStateImpl] = react.useState({
     action: history.action,
     location: history.location
   });
   let {
     v7_startTransition
   } = future || {};
-  let setState = React.useCallback(newState => {
+  let setState = react.useCallback(newState => {
     v7_startTransition && dist_startTransitionImpl ? dist_startTransitionImpl(() => setStateImpl(newState)) : setStateImpl(newState);
   }, [setStateImpl, v7_startTransition]);
-  React.useLayoutEffect(() => history.listen(setState), [history, setState]);
-  return /*#__PURE__*/React.createElement(Router, {
+  react.useLayoutEffect(() => history.listen(setState), [history, setState]);
+  return /*#__PURE__*/react.createElement(dist_Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -79959,7 +79959,7 @@ var AdminCreate = function AdminCreate() {
     setEndDateForm = _useState12[1];
   var navigate = dist_useNavigate();
   var handleCancel = function handleCancel() {
-    navigate('/GApp/admin/home');
+    navigate('/admin/home');
   };
   (0,react.useEffect)(function () {
     var tomorrow = moment_default()().add(1, 'days');
@@ -79995,7 +79995,7 @@ var AdminCreate = function AdminCreate() {
     };
     // const token = Cookies.get('token')
     addObjectToDatabase(data);
-    navigate('/GApp/admin/home');
+    navigate('/admin/home');
   }
   var settingStartDate = (0,react.useCallback)(function (date) {
     setStartDateForm(date);
@@ -80175,7 +80175,7 @@ var AdminForm = function AdminForm() {
     });
   }, []);
   var handleCancel = function handleCancel() {
-    navigate('/GApp/admin/home');
+    navigate('/admin/home');
   };
   var handleUpdate = function handleUpdate(e) {
     e.preventDefault();
@@ -80215,7 +80215,7 @@ var AdminForm = function AdminForm() {
     };
     objRef.update(updatedData).then(function () {
       console.log('object data updated successfully');
-      navigate('/GApp/admin/home');
+      navigate('/admin/home');
     })["catch"](function () {
       console.error('error updating');
     });
@@ -92689,7 +92689,7 @@ function LoginAdmin() {
               expires: expireTime
             });
             setError('success');
-            navigate('/GApp/admin/home');
+            navigate('/admin/home');
             _context.next = 24;
             break;
           case 20:
@@ -92711,7 +92711,7 @@ function LoginAdmin() {
     api.get('token');
     var token = api.get('token');
     if (token) {
-      navigate('/GApp/admin/home');
+      navigate('/admin/home');
     }
   }, []);
   return /*#__PURE__*/react.createElement(styles_ThemeProvider_ThemeProvider, {
@@ -93973,7 +93973,7 @@ var PollAdmin = function PollAdmin(props) {
     optiontwo = _props$data.optiontwo;
   var navigate = dist_useNavigate();
   var handlerNavigation = function handlerNavigation() {
-    navigate("/GApp/admin/edit/".concat(_id));
+    navigate("/admin/edit/".concat(_id));
   };
   var handleDeleteOption = function handleDeleteOption() {
     setOpen(true);
@@ -94095,7 +94095,7 @@ function AdminPage() {
     setLoading = _useState4[1];
   var navigate = dist_useNavigate();
   var handleRoute = function handleRoute() {
-    navigate('/GApp/admin/create');
+    navigate('/admin/create');
   };
   (0,react.useEffect)(function () {
     var fetchDataFromFirebase = function fetchDataFromFirebase() {
@@ -94117,7 +94117,7 @@ function AdminPage() {
     };
     var token = api.get('token');
     if (!token) {
-      navigate('/GApp/admin');
+      navigate('/admin');
     } else {
       fetchDataFromFirebase();
     }
@@ -94445,15 +94445,15 @@ var Navbar = function Navbar() {
   })), []);
   var handleProfileRoute = (0,react.useCallback)(function () {
     handleClose();
-    navigate('GApp/admin/profile');
+    navigate('/admin/profile');
   }, []);
   var handleHomeRoute = (0,react.useCallback)(function () {
     handleClose();
-    navigate('GApp/admin/home');
+    navigate('/admin/home');
   }, []);
   var handlePollHome = (0,react.useCallback)(function () {
     handleClose();
-    navigate('/GApp');
+    navigate('/');
   }, []);
   return /*#__PURE__*/react.createElement("nav", {
     className: "navbar"
@@ -94461,13 +94461,13 @@ var Navbar = function Navbar() {
     className: "container-fluid"
   }, /*#__PURE__*/react.createElement(NavLink, {
     className: "navbar-brand",
-    to: "/GApp"
+    to: "/"
   }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, {
     className: "brand-logo"
   }), "GApp"), !user && /*#__PURE__*/react.createElement("div", {
     className: "login-button-wrap"
   }, /*#__PURE__*/react.createElement(NavLink, {
-    to: "/GApp/admin"
+    to: "/admin"
   }, "Login")), /*#__PURE__*/react.createElement("div", {
     className: "admin-avatar"
   }, user && /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Button_Button, {
@@ -94486,21 +94486,21 @@ var Navbar = function Navbar() {
     }
   }, /*#__PURE__*/react.createElement(MenuItem_MenuItem, {
     onClick: handleHomeRoute,
-    selected: location.pathname === '/GApp/admin/home'
+    selected: location.hash === '#/admin/home'
   }, /*#__PURE__*/react.createElement(AdminPanelSettings/* default */.Z, {
     sx: {
       marginRight: '5px'
     }
   }), " Admin Home"), /*#__PURE__*/react.createElement(MenuItem_MenuItem, {
     onClick: handlePollHome,
-    selected: location.pathname === '/GApp'
+    selected: location.hash === '#/'
   }, /*#__PURE__*/react.createElement(Group/* default */.Z, {
     sx: {
       marginRight: '5px'
     }
   }), " Participant Home"), /*#__PURE__*/react.createElement(MenuItem_MenuItem, {
     onClick: handleProfileRoute,
-    selected: location.pathname === '/GApp/admin/profile'
+    selected: location.hash === '#/admin/profile'
   }, /*#__PURE__*/react.createElement(AccountCircle/* default */.Z, {
     sx: {
       marginRight: '5px'
@@ -94639,7 +94639,7 @@ function ErrorPage() {
       margin: '10px 0px'
     },
     onClick: react.useCallback(function () {
-      return navigate('/GApp');
+      return navigate('/');
     }, []),
     variant: "contained"
   }, "Go To Home"));
@@ -94854,25 +94854,27 @@ const Link_Link = /*#__PURE__*/react.forwardRef(function Link(inProps, ref) {
 
 
 function App() {
-  return /*#__PURE__*/react.createElement(BrowserRouter, null, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
+  return /*#__PURE__*/react.createElement(HashRouter, {
+    basename: "/"
+  }, /*#__PURE__*/react.createElement(navbar_Navbar, null), /*#__PURE__*/react.createElement("div", {
     className: "main-content"
   }, /*#__PURE__*/react.createElement(Routes, null, /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/",
+    path: "/",
     element: /*#__PURE__*/react.createElement(HomePage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/create",
+    path: "/admin/create",
     element: /*#__PURE__*/react.createElement(admin_AdminCreate, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/home",
+    path: "/admin/home",
     element: /*#__PURE__*/react.createElement(AdminPage, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/edit/:id",
+    path: "/admin/edit/:id",
     element: /*#__PURE__*/react.createElement(admin_AdminForm, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin",
+    path: "/admin",
     element: /*#__PURE__*/react.createElement(LoginAdmin, null)
   }), /*#__PURE__*/react.createElement(Route, {
-    path: "/GApp/admin/profile",
+    path: "/admin/profile",
     element: /*#__PURE__*/react.createElement(admin_AdminProfile, null)
   }), /*#__PURE__*/react.createElement(Route, {
     path: "*",

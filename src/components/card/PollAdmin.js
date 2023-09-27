@@ -16,7 +16,7 @@ const PollAdmin = (props) => {
   const { title, description, _id, votes, optiononevote, optiontwovote, startdate, enddate, optionone, optiontwo } = props.data
   const navigate = useNavigate()
   const handlerNavigation = () => {
-    navigate(`/GApp/admin/edit/${_id}`)
+    navigate(`/admin/edit/${_id}`)
   }
   const handleDeleteOption = () => {
     setOpen(true)

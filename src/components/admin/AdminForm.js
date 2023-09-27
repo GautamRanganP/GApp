@@ -40,7 +40,7 @@ const AdminForm = () => {
   }, [])
 
   const handleCancel = () => {
-    navigate('/GApp/admin/home')
+    navigate('/admin/home')
   }
 
   const handleUpdate = (e) => {
@@ -81,7 +81,7 @@ const AdminForm = () => {
     }
     objRef.update(updatedData).then(() => {
       console.log('object data updated successfully')
-      navigate('/GApp/admin/home')
+      navigate('/admin/home')
     }).catch(() => {
       console.error('error updating')
     })

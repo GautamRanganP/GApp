@@ -43,26 +43,26 @@ const Navbar = () => {
 
   const handleProfileRoute = useCallback(() => {
     handleClose()
-    navigate('GApp/admin/profile')
+    navigate('/admin/profile')
   }, [])
   const handleHomeRoute = useCallback(() => {
     handleClose()
-    navigate('GApp/admin/home')
+    navigate('/admin/home')
   }, [])
   const handlePollHome = useCallback(() => {
     handleClose()
-    navigate('/GApp')
+    navigate('/')
   }, [])
 
   return (
         <nav className="navbar">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/GApp">
+                <NavLink className="navbar-brand" to="/">
                     <GitHubIcon className="brand-logo"/>
                     GApp
                 </NavLink>
                 { !user && <div className="login-button-wrap">
-                <NavLink to="/GApp/admin">
+                <NavLink to="/admin">
                     Login
                 </NavLink>
                     </div> }
@@ -87,9 +87,9 @@ const Navbar = () => {
                                   'aria-labelledby': 'basic-button'
                                 }}
                             >
-                                <MenuItem onClick={handleHomeRoute} selected={location.pathname === '/GApp/admin/home' }><AdminPanelSettingsIcon sx={{ marginRight: '5px' }}/> Admin Home</MenuItem>
-                                <MenuItem onClick={handlePollHome} selected={location.pathname === '/GApp' }><GroupIcon sx={{ marginRight: '5px' }}/> Participant Home</MenuItem>
-                                <MenuItem onClick={handleProfileRoute} selected={location.pathname === '/GApp/admin/profile' }><AccountCircleIcon sx={{ marginRight: '5px' }}/> Profile</MenuItem>
+                                <MenuItem onClick={handleHomeRoute} selected={location.hash === '#/admin/home' }><AdminPanelSettingsIcon sx={{ marginRight: '5px' }}/> Admin Home</MenuItem>
+                                <MenuItem onClick={handlePollHome} selected={location.hash === '#/' }><GroupIcon sx={{ marginRight: '5px' }}/> Participant Home</MenuItem>
+                                <MenuItem onClick={handleProfileRoute} selected={location.hash === '#/admin/profile' }><AccountCircleIcon sx={{ marginRight: '5px' }}/> Profile</MenuItem>
                                 <MenuItem onClick={handleLogoutClick}><LogoutIcon sx={{ marginRight: '5px' }}/> Logout</MenuItem>
                             </Menu>
                         </div>}

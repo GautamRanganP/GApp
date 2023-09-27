@@ -48,7 +48,7 @@ export default function LoginAdmin () {
       Cookies.set('user_id', response.user.uid, { expires: expireTime })
       Cookies.set('token', response.user._delegate.accessToken, { expires: expireTime })
       setError('success')
-      navigate('/GApp/admin/home')
+      navigate('/admin/home')
     } catch (error) {
       console.log('failed', error)
       setError('failed')
@@ -82,7 +82,7 @@ export default function LoginAdmin () {
     Cookies.get('token')
     const token = Cookies.get('token')
     if (token) {
-      navigate('/GApp/admin/home')
+      navigate('/admin/home')
     }
   }, [])
 

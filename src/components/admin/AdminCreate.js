@@ -17,7 +17,7 @@ const AdminCreate = () => {
   const navigate = useNavigate()
 
   const handleCancel = () => {
-    navigate('/GApp/admin/home')
+    navigate('/admin/home')
   }
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const AdminCreate = () => {
     const data = { title, description, startdate, enddate, votes, optionone, optiontwo, optiononevote, optiontwovote }
     // const token = Cookies.get('token')
     addObjectToDatabase(data)
-    navigate('/GApp/admin/home')
+    navigate('/admin/home')
   }
 
   const settingStartDate = useCallback((date) => {
