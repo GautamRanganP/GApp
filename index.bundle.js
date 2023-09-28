@@ -80046,7 +80046,7 @@ var AdminCreate = function AdminCreate() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optionone"
-  }, "option 1"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 1"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optionone",
@@ -80059,7 +80059,7 @@ var AdminCreate = function AdminCreate() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optiontwo"
-  }, "option 2"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 2"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optiontwo",
@@ -80262,7 +80262,7 @@ var AdminForm = function AdminForm() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optionone"
-  }, "option 1"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 1"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optionone",
@@ -80275,7 +80275,7 @@ var AdminForm = function AdminForm() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optiontwo"
-  }, "option 2"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 2"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optiontwo",
@@ -93155,6 +93155,8 @@ function PollCard_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+// import PollDetails from '../modal/PollDetails'
 
 var PollCard = function PollCard(props) {
   var _useState = (0,react.useState)(''),
