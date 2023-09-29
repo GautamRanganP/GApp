@@ -9,6 +9,7 @@ import TimerIcon from '@mui/icons-material/Timer'
 import Popover from '@mui/material/Popover'
 import './card.scss'
 import { Typography } from '@mui/material'
+// import PollDetails from '../modal/PollDetails'
 
 const PollCard = (props) => {
   const [option, setOption] = useState('')
@@ -262,6 +263,9 @@ const PollCard = (props) => {
               Poll expired
             </span>
               )}
+               {/* <div className="view-details-wrap">
+          <PollDetails data={props.data}/>
+          </div> */}
         </div>
       </div>
     </div>

@@ -3,17 +3,15 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
   Title,
   Tooltip,
   Legend
-} from 'chart.js'
-import { Bar } from 'react-chartjs-2'
+} from 'chart.js/auto'
+import { Pie } from 'react-chartjs-2'
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
   Title,
   Tooltip,
   Legend
@@ -23,28 +21,44 @@ const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top'
+      position: 'bottom'
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart'
+      text: 'Poll Statistics'
     }
   }
 }
 
-const labels = ['John', 'Max']
-
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [12, 40],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)'
-    }
-  ]
-}
+// const labels = ['John', 'Max']
+// const data = {
+//   labels,
+//   datasets: [
+//     {
+//       label: labels,
+//       data: [12, 40],
+//       backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(155, 199, 132, 0.5)']
+//     }
+//   ]
+// }
 
 export function ChartPoll (props) {
-  return <Bar options={options} data={data} style={{ width: '600px', height: '600px' }}/>
+  const {
+    optionone,
+    optiontwo,
+    optiononevote,
+    optiontwovote
+  } = props.data
+  const labels = [optionone, optiontwo]
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: labels,
+        data: [optiononevote, optiontwovote],
+        backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(155, 199, 132, 0.5)']
+      }
+    ]
+  }
+  return (optiononevote !== 0 && optiontwovote !== 0 ? <Pie options={options} data={data}/> : <p>Not Enough Poll Count</p>)
 }

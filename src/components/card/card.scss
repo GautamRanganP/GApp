@@ -14,6 +14,13 @@
 .card{
     border: 5px solid rgb(227, 242, 253);
     .card-body{
+        .card-text{
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            width: 100%;
+        }
         .votes-wrap-admin{
             display: grid;
             overflow-x: auto;
@@ -49,13 +56,16 @@
             .poll-expired-text{
                 color: red;
             }
-            .already-voted-text,.poll-expired-text,.total-votes-text,.days-left-text{
+            .already-voted-text,.poll-expired-text,.total-votes-text,.days-left-text,.view-details-wrap button{
                 display: flex;
                 align-items: center;
                 font-weight: 600;
                 font-size: 14px;
                 margin: 10px;
                 margin-bottom: 0px;
+            }
+            .view-details-wrap button{
+                margin-right: 0px;
             }
             .total-votes-text,.days-left-text{
                 color: gray;

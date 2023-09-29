@@ -1,8 +1,10 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+// import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
+import { ChartPoll } from '../chart/chart'
+import './PollDetails.scss'
 
 const style = {
   position: 'absolute',
@@ -10,20 +12,25 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
+  height: 'auto',
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
   p: 4
 }
 
-export default function PollDetails () {
+export default function PollDetails (props) {
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const {
+    title,
+    description
+  } = props.data
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+    <div className='poll-details-wrap'>
+      <button className='poll-details-button btn btn-primary' onClick={handleOpen}>View Detail</button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -31,11 +38,12 @@ export default function PollDetails () {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography id="modal-modal-title" className="modal-container-wrap" variant="h6" component="h2">
+            {title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          <span className="modal-description-text">{description}</span>
+          <ChartPoll data={props.data}></ChartPoll>
           </Typography>
         </Box>
       </Modal>
