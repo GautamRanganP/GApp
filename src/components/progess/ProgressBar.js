@@ -19,10 +19,13 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 export default function ProgressBar (props) {
   return (
+    // <div className='tooltips'>
     <Box className = {`progress-wrap ${props.votedoption === props.option ? 'active-vote' : ''}`}>
-      <BorderLinearProgress variant='determinate' value={props.data} />
-      <span className='vote-percent-text'>{props.data}%</span>
-      { props.votedoption === props.option && <DoneIcon className='progress-done-icon'/>}
+        <BorderLinearProgress variant='determinate' value={props.data} />
+        <span className='vote-percent-text'>{props.data}%</span>
+        { props.votedoption === props.option && <DoneIcon className='progress-done-icon'/>}
     </Box>
+    // <span className='tooltiptext'>CSK</span>
+    // </div>
   )
 }

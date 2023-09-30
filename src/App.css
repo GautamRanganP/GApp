@@ -126,9 +126,46 @@ body{
   display: flex;
   flex-direction: column;
 }
+.poll-tab{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poll-tab-item{
+  background-color: #e3f2fd;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1a90ff;
+  color: black;
+  padding: 5px 15px !important;
+}
+.poll-tab-item.active-poll{
+  background: #1a90ff;
+  border-color: #1a90ff;
+  color: white;
+}
+.poll-tab-item:hover{
+  background-color: #1a90ff;
+  color: white;
+}
 
-@media (max-width: 1023px) {
+@media (max-width: 1023.98px) {
+  .poll-tab{
+    margin-bottom: 20px;
+  }
   .row.poll-card-margin{
     margin: 4px
+  }
+}
+
+@media (max-width: 575px) {
+  .poll-tab-item{
+    flex: 1;
+  }
+  .poll-tab{
+    padding: 0px 16px;
   }
 }

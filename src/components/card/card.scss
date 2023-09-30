@@ -76,7 +76,13 @@
             }
         }
         .options-button-wrap{
+            min-height: 69.34px;
+            margin-bottom: 10px;
+            display: inline-flex !important;
+            width: 100%;
             button{
+                height: 100%;
+                align-self: center;
                 flex: 1; 
                 font-weight: 700;
             }
