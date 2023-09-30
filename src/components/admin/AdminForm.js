@@ -100,11 +100,11 @@ const AdminForm = () => {
                     <textarea className="form-control" id="description" value={description} onChange={(e) => setDescription(e.target.value)} rows="3"></textarea>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="optionone">option 1</label>
+                    <label htmlFor="optionone">Option 1</label>
                     <input type="text" className="form-control" id="optionone" placeholder="optionone" value={optionone} onChange={(e) => setOptionOne(e.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="optiontwo">option 2</label>
+                    <label htmlFor="optiontwo">Option 2</label>
                     <input type="text" className="form-control" id="optiontwo" placeholder="optiontwo" value={optiontwo} onChange={(e) => setOptionTwo(e.target.value)}/>
                 </div>
                 <div className="form-group">

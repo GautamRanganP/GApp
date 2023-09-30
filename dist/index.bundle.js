@@ -80046,7 +80046,7 @@ var AdminCreate = function AdminCreate() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optionone"
-  }, "option 1"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 1"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optionone",
@@ -80059,7 +80059,7 @@ var AdminCreate = function AdminCreate() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optiontwo"
-  }, "option 2"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 2"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optiontwo",
@@ -80262,7 +80262,7 @@ var AdminForm = function AdminForm() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optionone"
-  }, "option 1"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 1"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optionone",
@@ -80275,7 +80275,7 @@ var AdminForm = function AdminForm() {
     className: "form-group"
   }, /*#__PURE__*/react.createElement("label", {
     htmlFor: "optiontwo"
-  }, "option 2"), /*#__PURE__*/react.createElement("input", {
+  }, "Option 2"), /*#__PURE__*/react.createElement("input", {
     type: "text",
     className: "form-control",
     id: "optiontwo",
@@ -93156,6 +93156,8 @@ function PollCard_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+// import PollDetails from '../modal/PollDetails'
+
 var PollCard = function PollCard(props) {
   var _useState = (0,react.useState)(''),
     _useState2 = PollCard_slicedToArray(_useState, 2),
@@ -94435,7 +94437,7 @@ var Navbar = function Navbar() {
           dispatch(removeUser());
           token = api.get('token');
           if (!token) {
-            navigate('GApp/admin');
+            navigate('/admin');
           }
         case 9:
         case "end":
@@ -94464,11 +94466,7 @@ var Navbar = function Navbar() {
     to: "/"
   }, /*#__PURE__*/react.createElement(GitHub/* default */.Z, {
     className: "brand-logo"
-  }), "GApp"), !user && /*#__PURE__*/react.createElement("div", {
-    className: "login-button-wrap"
-  }, /*#__PURE__*/react.createElement(NavLink, {
-    to: "/admin"
-  }, "Login")), /*#__PURE__*/react.createElement("div", {
+  }), "GApp"), /*#__PURE__*/react.createElement("div", {
     className: "admin-avatar"
   }, user && /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Button_Button, {
     id: "basic-button",
