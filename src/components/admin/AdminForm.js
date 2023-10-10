@@ -90,6 +90,9 @@ const AdminForm = () => {
   return (
         <div className="wrap">
             <form onSubmit={handleUpdate} className="form-edit">
+                {/* <div className='admin-form-title-wrap'>
+                  <h2 className='admin-form-title'>Update Poll</h2>
+                </div> */}
                 <span style={{ fontSize: '24px', fontWeight: '700', width: '100%', display: 'inline-block', textAlign: 'center' }}>Update Poll</span>
                 <div className="form-group">
                     <label htmlFor="title">Title</label>

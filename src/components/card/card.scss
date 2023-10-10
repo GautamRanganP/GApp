@@ -112,3 +112,17 @@
         }
     }
 }
+
+
+@media (max-width: 575.98px) {
+    .card{
+        .card-body{
+            .options-button-wrap{
+                gap: 15px !important;
+            button{
+                font-size: 12px;
+            }
+            }
+        }
+    }
+}

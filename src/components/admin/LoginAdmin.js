@@ -12,10 +12,10 @@ import Alert from '@mui/material/Alert'
 import CircularProgess from '@mui/material/CircularProgress'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
-import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
-import { setUser } from '../feature/UserSlice'
+import { loginUser } from '../feature/UserSlice'
 import { auth } from '../../firebase/firebase'
+import Cookies from 'js-cookie'
 // import { useAuth } from '../../contexts/AuthContext'
 
 const theme = createTheme()
@@ -42,40 +42,17 @@ export default function LoginAdmin () {
       // const data = await auth.createUserWithEmailAndPassword(email, password)
       const response = await auth.signInWithEmailAndPassword(email, password)
       console.log('sucess', response.user.email)
-      const data = { user: response.user.email }
-      dispatch(setUser(data))
-      const expireTime = new Date(new Date().getTime() + 60 * 60 * 1000)
-      Cookies.set('user_id', response.user.uid, { expires: expireTime })
-      Cookies.set('token', response.user._delegate.accessToken, { expires: expireTime })
+      dispatch(loginUser({ user: response.user.email, userId: response.user.uid, accessToken: response.user._delegate.accessToken }))
+      // setTimeout(() => {
+      //   console.log('Token expired')
+      //   dispatch(setNotify(true))
+      // }, 10000)
       setError('success')
       navigate('/admin/home')
     } catch (error) {
       console.log('failed', error)
       setError('failed')
     }
-    // const payload = { email, password }
-    // fetch('http://localhost:8082/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(payload)
-    // }).then((response) => {
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok')
-    //   }
-    //   return response.json()
-    // }).then((data) => {
-    //   console.log('login sucess', data)
-    //   dispatch(setUser(data))
-    //   const expireTime = new Date(new Date().getTime() + 60 * 60 * 1000)
-    //   Cookies.set('user_id', data._id, { expires: expireTime })
-    //   Cookies.set('token', data.token, { expires: expireTime })
-    //   setError('success')
-    //   redirect('/admin/home')
-    // }).catch(() => {
-    //   setError('failed')
-    // })
   }, [])
 
   React.useEffect(() => {
@@ -155,7 +132,6 @@ export default function LoginAdmin () {
             { error === 'success' && <Alert severity='success'>Authentication Sucess</Alert> }
           </Box>
         </Box>
-        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>
   )

@@ -17,9 +17,7 @@ const PollCard = (props) => {
   const [percenttwo, setPercentTwo] = useState(0)
   const [ispollalreadyselected, setIsPollAlreadySelected] = useState(false)
   const [daysleft, setDaysLeft] = useState('')
-  const user = useSelector((state) => {
-    if (state.user && state.user.user) return state.user.user
-  })
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const {
     _id,
     title,
@@ -34,22 +32,22 @@ const PollCard = (props) => {
   } = props.data
 
   const [anchorEl1, setAnchorEl1] = React.useState(null)
+  const open1 = Boolean(anchorEl1)
+  const [anchorEl2, setAnchorEl2] = React.useState(null)
+  const open2 = Boolean(anchorEl2)
+
   const handlePopoverOpen1 = (event) => {
     setAnchorEl1(event.currentTarget)
   }
   const handlePopoverClose1 = () => {
     setAnchorEl1(null)
   }
-  const open1 = Boolean(anchorEl1)
-
-  const [anchorEl2, setAnchorEl2] = React.useState(null)
   const handlePopoverOpen2 = (event) => {
     setAnchorEl2(event.currentTarget)
   }
   const handlePopoverClose2 = () => {
     setAnchorEl2(null)
   }
-  const open2 = Boolean(anchorEl2)
 
   useEffect(() => {
     if (votes !== 0) {
@@ -156,7 +154,7 @@ const PollCard = (props) => {
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
-        { !ispollalreadyselected && daysleft >= 1 && !user
+        { !ispollalreadyselected && daysleft >= 1 && !isAuthenticated
           ? (<div className="d-flex gap-4 options-button-wrap">
             <button
               className="btn btn-primary "
@@ -238,7 +236,7 @@ const PollCard = (props) => {
           </div>
             )}
         <div className="votes-wrap d-flex justify-content-end">
-          {ispollalreadyselected && !user
+          {ispollalreadyselected && !isAuthenticated
             ? (
             <span className="already-voted-text">
               <CheckCircleOutlineIcon className="icon-tick" /> Already voted</span>

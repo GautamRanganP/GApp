@@ -7,7 +7,7 @@ import './admin.scss'
 import { useNavigate } from 'react-router-dom'
 
 const AdminProfile = () => {
-  const user = useSelector((state) => state.user.user)
+  const user = useSelector((state) => state.user.user.email)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const AdminProfile = () => {
       </div>
       { user &&
       <div className='admin-user-input'>
-        <TextField disabled id="outlined-basic" label="Username" variant='outlined' defaultValue={user.user} className='user-profile-input'></TextField>
+        <TextField disabled id="outlined-basic" label="Username" variant='outlined' defaultValue={user} className='user-profile-input'></TextField>
         {user.first_name && <TextField disabled id="outlined-basic" label="Firstname" variant='outlined' defaultValue={user.first_name} className='user-profile-input'></TextField>}
       </div>
       }

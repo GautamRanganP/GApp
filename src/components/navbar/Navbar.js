@@ -16,7 +16,11 @@ import './Navbar.scss'
 import { auth } from '../../firebase/firebase'
 
 const Navbar = () => {
-  const user = useSelector((state) => { if (state.user && state.user.user) return state.user.user })
+  const user = useSelector((state) => {
+    console.log('navbar', state.user.user.email)
+    return state.user.user.email
+  })
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const navigate = useNavigate()
@@ -31,9 +35,6 @@ const Navbar = () => {
   const handleLogoutClick = useCallback(async () => {
     handleClose()
     await auth.signOut()
-    localStorage.removeItem('token')
-    Cookies.remove('token')
-    Cookies.remove('user_id')
     dispatch(removeUser())
     const token = Cookies.get('token')
     if (!token) {
@@ -67,8 +68,8 @@ const Navbar = () => {
                 </NavLink>
                     </div> } */}
                 <div className="admin-avatar">
-                    { user &&
-                        <div>
+                    { isAuthenticated &&
+                        <div className='custom-menu-bar'>
                             <Button
                                 id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
@@ -76,7 +77,7 @@ const Navbar = () => {
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
                             >
-                              <Avatar>{user.user.slice(0, 1)}</Avatar>
+                              {user && <Avatar>{user.slice(0, 1)}</Avatar>}
                             </Button>
                             <Menu
                                 id="basic-menu"

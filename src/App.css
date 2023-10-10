@@ -6,7 +6,7 @@ label.form-label {
 }
 
 button.btn.btn-primary,button.btn.btn-success,button.btn.btn-danger {
-  background-color: transparent;
+  background-color: white;
   border-width: 1.5px;
   color: #007bff;
   font-weight: 500;
@@ -72,12 +72,12 @@ button.btn.btn-primary:hover,button.btn.btn-success:hover,button.btn.btn-danger:
 }
 .form-edit{
   border-radius: 5px;
+  background-color: rgb(227, 242, 253);
   border: 5px solid rgb(227, 242, 253);
    /* border: 1px solid rgb(220, 217, 217); */
   padding: 40px;
   width: 600px;
   margin:20px;
-  background-color: white;
 }
 .form-group{
    margin: 20px 0px;
