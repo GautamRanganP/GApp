@@ -17,15 +17,28 @@ import { loginUser } from '../feature/UserSlice'
 import { auth } from '../../firebase/firebase'
 import Cookies from 'js-cookie'
 // import { useAuth } from '../../contexts/AuthContext'
+// import { useSelector } from 'react-redux'
 
 const theme = createTheme()
 
 export default function LoginAdmin () {
+  // const isLogout = useSelector((state) => state.user.isSelectLogout)
   const [error, setError] = useState('')
+  // const [holdtimeout, setHoldTimeout] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
   // const login = useAuth()
   // const signup = useAuth()
+  // function triggerTimeout () {
+  //   setHoldTimeout(setTimeout(() => {
+  //     console.log("problem")
+  //     dispatch(setNotify(true))
+  //   }, 5000))
+  // }
+  // function StopTimeout() {
+  //   console.log("logout")
+  //   clearTimeout(holdtimeout)
+  // }
 
   const handleSubmit = React.useCallback(async (event) => {
     event.preventDefault()
@@ -43,6 +56,7 @@ export default function LoginAdmin () {
       const response = await auth.signInWithEmailAndPassword(email, password)
       console.log('sucess', response.user.email)
       dispatch(loginUser({ user: response.user.email, userId: response.user.uid, accessToken: response.user._delegate.accessToken }))
+      // dispatch(triggerTimeout())
       // setTimeout(() => {
       //   console.log('Token expired')
       //   dispatch(setNotify(true))
@@ -54,6 +68,12 @@ export default function LoginAdmin () {
       setError('failed')
     }
   }, [])
+
+  // React.useEffect(() => {
+  //   if (isLogout) {
+  //     StopTimeout()
+  //   }
+  // }, [isLogout])
 
   React.useEffect(() => {
     Cookies.get('token')
@@ -106,6 +126,7 @@ export default function LoginAdmin () {
               type="submit"
               fullWidth
               variant="contained"
+              id="gapp-login-button"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In

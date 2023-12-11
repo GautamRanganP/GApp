@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'production',
@@ -18,6 +19,9 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       favicon: './public/favicon.ico',
@@ -70,6 +74,9 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      process: 'process/browser'
+    }
   }
 }

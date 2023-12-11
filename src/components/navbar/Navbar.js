@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -11,18 +11,21 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import GroupIcon from '@mui/icons-material/Group'
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
 import Cookies from 'js-cookie'
-import { removeUser } from '../feature/UserSlice'
+import { removeUser, setUser } from '../feature/UserSlice'
 import './Navbar.scss'
 import { auth } from '../../firebase/firebase'
 
 const Navbar = () => {
   const user = useSelector((state) => {
-    console.log('navbar', state.user.user.email)
-    return state.user.user.email
+    if (state.user && state.user.user && state.user.user.email) {
+      return state.user.user.email
+    }
   })
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated)
+
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -53,6 +56,33 @@ const Navbar = () => {
   const handlePollHome = useCallback(() => {
     handleClose()
     navigate('/')
+  }, [])
+
+  useEffect(() => {
+    let tokenExpiration
+    // 1 hour
+    const delayExpiration = 1 * 60 * 60 * 1000
+    if (isAuthenticated) {
+      tokenExpiration = setTimeout(() => {
+        // dispatch(autoLogout(true))
+      }, delayExpiration)
+    }
+    return () => {
+      clearTimeout(tokenExpiration)
+    }
+  }, [isAuthenticated])
+
+  useEffect(() => {
+    const userId = Cookies.get('user_id')
+    const token = Cookies.get('token')
+    if (userId && token && !isAuthenticated) {
+      auth.onAuthStateChanged(user => {
+        if (user && user.email) {
+          const data = { email: user.email }
+          dispatch(setUser(data))
+        }
+      })
+    }
   }, [])
 
   return (

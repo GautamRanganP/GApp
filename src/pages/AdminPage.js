@@ -46,7 +46,7 @@ export function AdminPage () {
         <div>
             <div className="content-poll">
                 <div className="d-flex justify-content-center mb-4">
-                    <button className="btn btn-primary" onClick={handleRoute}>Create Poll</button>
+                    <button className="btn btn-primary" id="create-poll-btn" onClick={handleRoute}>Create Poll</button>
                 </div>
                 {data.length > 0 && !loading &&
                   <div className="row poll-card-margin">

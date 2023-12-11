@@ -95,7 +95,7 @@ export function HomePage () {
                     })
                     }
                 </div>}
-          { !pollActiveData.length > 0 && !loading && <div className='poll-empty'>
+          { !pollActiveData.length > 0 && isSelected === 'pollActive' && !loading && <div className='poll-empty'>
                No Poll Available
               </div>
 }

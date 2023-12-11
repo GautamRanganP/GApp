@@ -157,6 +157,7 @@ const PollCard = (props) => {
         { !ispollalreadyselected && daysleft >= 1 && !isAuthenticated
           ? (<div className="d-flex gap-4 options-button-wrap">
             <button
+              id='option-one'
               className="btn btn-primary "
               value={optionone}
               type="button"

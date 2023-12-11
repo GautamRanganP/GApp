@@ -139,8 +139,9 @@ body{
   align-items: center;
   justify-content: center;
   border: 1px solid #1a90ff;
-  color: black;
+  color: #1a90ff;
   padding: 5px 15px !important;
+  transition: background-color .3s ease-in-out;
 }
 .poll-tab-item.active-poll{
   background: #1a90ff;

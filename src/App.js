@@ -3,7 +3,7 @@ import * as React from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogTitle from '@mui/material/DialogTitle'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
@@ -16,17 +16,21 @@ import Navbar from './components/navbar/Navbar'
 import AdminProfile from './components/admin/AdminProfile'
 import ErrorPage from './components/error/ErrorPage'
 import { Link, Typography } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useSelector ,useDispatch } from 'react-redux'
+import { autoLogout } from './components/feature/UserSlice'
 
 function App () {
   const isNotify = useSelector((state) => state.user.isNotify)
-
+  // const dispatch = useDispatch()
+  // const navigate = useNavigate()
   const HandleLoginRefresh = () => {
 
   }
   const handleLogoutRefresh = () => {
-
+    // dispatch(autoLogout(false))
+    // navigate('/')
   }
+
   return (
       <HashRouter basename='/'>
         <Navbar></Navbar>
